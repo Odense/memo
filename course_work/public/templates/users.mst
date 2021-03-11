@@ -1,0 +1,44 @@
+<table class="table table-light table-bordered text-center">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Ava</th>
+        <th scope="col">Full name</th>
+        <th scope="col">Registred</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#users}}
+        <tr>
+            <td><img src="{{avaUrl}}" width="42" height="42" style="border-radius: 50%;"/></td>
+            <td><a href="users/{{_id}}" style="margin-top: 50px;">{{username}}</a></td>
+            <td>{{registeredAt}}</td>
+        </tr>
+    {{/users}}
+    </tbody>
+    {{^users}}
+    </br>
+    <strong style="color: orange">No results for "{{searchedUsername}}"</strong>
+    </br>
+    </br>
+    {{/users}}
+</table>
+
+<!--<table border="1">
+                            <tr>
+                                <th>Login</th>
+                                <th>Full name</th>
+                            </tr>
+                            {{#users}}
+                            <tr>
+                                <td><a href="users/{{_id}}">{{username}}<a></td>
+                                <td>{{fullname}}</td>
+                           </tr>
+                           {{/users}}
+                           {{^users.length}}
+                                <tr>
+                                        <td>No matches for {{searchedUsername}}!</td>
+                                </tr>
+                            {{/users.length}}
+                          </table>
+                          -->
+                          

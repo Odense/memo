@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/user_page_style.css">
+    <link rel="shortcut icon" href="/images/logo.png" type="image/png">
+
+    <title>REST API v1</title>
+  </head>
+  <body>
+
+    <h2 id="restapiv1">REST API v1</h2>
+
+    <h3>Available resources:</h3>
+
+    <ol class="list-group col-1">
+        <li class="list-group-item"><a href=https://memo-notes.herokuapp.com/api/v1/users>User</a></li>
+        <li class="list-group-item"><a href=https://memo-notes.herokuapp.com/api/v1/notes>Notes</a></li>
+        <li class="list-group-item"><a href=https://memo-notes.herokuapp.com/api/v1/lists>Lists</a></li>
+    </ol>
+    <h3>Method to access to resource (path https://memo-notes.herokuapp.com/{resource}):</h3>
+
+    <ul class="list-group col-3">
+            <li class="list-group-item">User:
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>GET /users</strong> - <em>get list of all users</em></li>
+                    <li class="list-group-item"><strong>GET /users/:id</strong> - <em>get user by id</em></li>
+                    <li class="list-group-item"><strong>POST /users</strong> - <em>add new user</em></li>
+                    <li class="list-group-item"><strong>PUT /users</strong> - <em>edit user role by admin</em></li>
+                    <li class="list-group-item"><strong>DELETE /users/:id</strong> - <em>delete user by id</em></li>
+                </ul>
+            </li>
+            <li class="list-group-item">Note:
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>GET /</strong> - <em>get list of all notes</em></li>
+                    <li class="list-group-item"><strong>GET /notes/:id</strong> - <em>get note by id</em></li>
+                    <li class="list-group-item"><strong>POST /notes</strong> - <em>add new note</em></li>
+                    <li class="list-group-item"><strong>PUT /notes/</strong> - <em>edit note</em></li>
+                    <li class="list-group-item"><strong>DELETE /notes/:id</strong> - <em>delete note by id</em></li>
+                </ul>
+            </li>
+            <li class="list-group-item">List:
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>GET /lists</strong> - <em>get list of all lists</em></li>
+                    <li class="list-group-item"><strong>GET /lists/:id</strong> - <em>get list by id</em></li>
+                    <li class="list-group-item"><strong>POST /lists</strong> - <em>add new list</em></li>
+                    <li class="list-group-item"><strong>PUT /lists</strong> - <em>edit list</em></li>
+                    <li class="list-group-item"><strong>DELETE /lists/:id</strong> - <em>delete list by id</em></li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>Authorization method</h3>
+        <p>
+            To access resources you have to login or register on site.<br>
+            To register on site you have to enter username, password add fullname.<br>
+            To login on site you have to enter correct username and password.
+        </p>
+
+        <h3>Error types</h3>
+        <p> Errors return in format {errorCode, ErrorMessage} in case of incorrect entered data. </p>
+        <p> In format Unauthorized/Forbidden in case of unauthorization or lack of access rights. </p>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>

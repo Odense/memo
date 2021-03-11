@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/user_page_style.css">
+    <link href="https://allfont.ru/allfont.css?fonts=avantgardectt" rel="stylesheet" type="text/css" />
+    <link href='https://fonts.googleapis.com/css?family=Merienda:700' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="/images/logo.png" type="image/png">
+
+    <title>Memo</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top" id="navBar">
+      <div class="container">
+        <a href="/" class="navbar-brand">
+          <img src="/images/logo.png" width="42" height="42" alt="logo">
+        </a>
+        <a class="navbar-brand" href="/"><span class="titleFont">Memo</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a href="/" class="nav-link"><i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="/about" class="nav-link"><i class="fas fa-info"></i> About</a>
+            </li>
+            {{^currentuser}}
+            <li class="nav-item">
+              <a href="/auth/register" class="nav-link" data-toggle="modal" data-target="#signUpModal"><i class="fas fa-user-plus"></i> Sign Up</a>
+            </li>
+            <li class="nav-item">
+              <a href="/auth/login" class="nav-link" data-toggle="modal" data-target="#loginModal"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+            </li>
+            {{/currentuser}}
+            {{#currentuser}}
+            <li class="nav-item" id="userLink"></li>
+              <script>
+                if({{currentuser.role}} === 1)
+                  document.getElementById('userLink').innerHTML = `<a href = "/users" class="nav-link"><i class="fas fa-users"></i> Users</a>`;
+              </script>
+            <li class="nav-item">
+              <a href="/lists" class="nav-link active"><i class="fas fa-list-ul"></i> Task lists</a>
+            </li>
+            <li class="nav-item">
+              <pre>        </pre>
+            </li>
+            <li class="nav-item ml-5">
+              <a class="nav-link disabled">Hello, {{fullname}}</a>
+            </li>
+            <li>
+              <a href="/users/{{id}}" class="profile-image">
+				    <img src="{{avaUrl}}" width="42" height="42" class="img-circle special-img ava-sm" id="avaUrl">
+              </a>
+            </li>
+            <li class="nav-item ml-3">
+              <a href="/auth/logout" class="nav-link"><i class="fas fa-sign-out-alt"></i> Log out</a>
+            </li>
+            {{/currentuser}}
+          </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid mb-5" id="listPart">
+        <div class="row justify-content-center align-items-center" id="content">
+            <div class="col-4 text-center">
+                <img src="{{list.listAva}}" width="256" height="256" class="mt-3" id="listAva"> </br>
+            </div>
+            <div class="col-4 text-center mt-5">
+                <h2>{{list.title}}</h2>
+                <label class="font-weight-bold">Created at:</label> <p>{{list.createdAt}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt-5" id="content">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-6 text-center d-inline-flex">
+                <input type="text" name="title" id="titleFilter" class="form-control"
+                    placeholder="Search note by title...">
+                <button id="clearFilter" class="button ml-1 btn btn-light">Clear</button>
+            </div>
+        </div>
+        <div class="row justify-content-center align-items-center mt-3">
+            <div class="col-6 text-center">
+                <strong id="totalNotes"></strong>
+                </br>
+                </br>
+                <form action="/notes/new" method="GET">
+                    <input class="button btn btn-success" type="submit" value="Add note">
+                    <input type="hidden" name="listId" value="{{list._id}}">
+                </form>
+                </br>
+                <span id="filteredNotes"></span>
+            </div>
+        </div>
+        <p class="text-center"><span id="currPage"></span>/<span id="maxPage"></span></p>
+        <div class="row justify-content-center align-items-center mt-3">
+            <div class="col-2 text-center d-inline-flex mb-3" id="content">
+                <pre>          </pre>
+                <button id="btn_prev" class="button mr-3 btn btn-light">Prev</button>
+                <button id="btn_next" class="button ml-3 btn btn-light">Next</button>
+            </div>
+        </div>
+    </div>
+
+
+    <input id="listId" value="{{list._id}}" type="hidden"></input>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/v2.1.3/dist/bootstrap-validate.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+    <script src="/javascripts/ui-notes.js"></script>
+    <script src="/javascripts/browser-notes.js"></script>
+  </body>
+</html>

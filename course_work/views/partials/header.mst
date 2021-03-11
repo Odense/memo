@@ -1,0 +1,9 @@
+<div class="logo-container">
+          <pre><h1><img src = "/images/logo.png" width="64" height="64">
+Welcome to the memo!</h1></pre>
+      </div>
+{{#currentuser}}
+<div class="greeting">
+            <h3>Hello, {{currentuser.fullname}}</h3>
+      </div>
+{{/currentuser}}

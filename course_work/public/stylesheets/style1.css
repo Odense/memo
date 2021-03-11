@@ -1,0 +1,123 @@
+.titleFont:hover
+{
+    color: #5ccbec;
+}
+
+.titleFont
+{
+    font-size: 26px;
+    font-family: 'Merienda', cursive;
+}
+
+.p-0
+{
+    padding: 0;
+}
+
+pre > p 
+{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18.5px;
+}
+
+.navbar-light .navbar-nav .nav-link.disabled
+{
+    color: black;
+    cursor: default;
+}
+
+.element.style
+{
+    border-style: solid;
+}
+
+.row
+{
+    z-index: 3;
+}
+
+.modal-body > p
+{
+    color: red;
+}
+
+.alert
+{
+    display: none;
+}
+
+.alert > strong
+{
+    color: red;
+}
+
+.big-banner
+{
+    background-image: url('../images/about_background.jpg');
+    background-size: 100%;
+}
+
+.lead
+{
+    font-size: 26px;
+}
+
+body
+{
+    height: 100%;
+    background-color: #B0E0E6;
+}
+
+#avaUrl
+{
+    border-color: #008B8B; 
+    border-style: dotted; 
+    border-radius: 50%; 
+    border-width: 2.5px
+}
+
+#navBar
+{
+    background-color: #a8ebff;
+}
+
+#listPart
+{
+    background-color: #B0E0E6;
+}
+
+#listAva
+{
+    border-radius: 50%;
+}
+
+#userInfo
+{
+    background-color: #B0E0E6;
+}
+
+#infoFields
+{
+    max-width: 600px;
+    overflow-wrap: break-word;
+}
+
+#userAva
+{
+    border-radius: 50%; 
+}
+
+#warning
+{
+    color: orange;
+}
+
+#footer-withd
+{
+    width: 100%;
+}
+
+#bannerInf
+{
+    height: 925px;
+}

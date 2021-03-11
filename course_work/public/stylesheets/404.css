@@ -1,0 +1,28 @@
+body
+{
+    background: #82c8d1;
+}
+.page-wrap
+{
+    min-height: 100vh;
+}
+
+.access
+{
+    color: red;
+}
+
+#back404
+{
+    color: #F5FFFA
+}
+
+#display404
+{
+    color: green;
+}
+
+#display403
+{
+    color: red;
+}

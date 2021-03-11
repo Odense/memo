@@ -1,0 +1,52 @@
+<!--<ul class="list-group mt-3">
+    {{#lists}}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+        <img src="{{listAva}}" width="42" height="42" style="border-radius: 50%;"/>
+        <a href="/lists/{{_id}}">{{title}}</a>
+        <span class="d-inline-flex">
+            <button type="button" class="btn btn-danger text-right" id="deleteBtn" onClick='CreateModal("{{_id}}");' data-toggle="modal" data-target="#myModal">Delete</button>
+            <form action="/lists/update/{{_id}}" method="GET">
+                <button type="submit" class="btn btn-light">Update</button>
+            </form>
+        </span>
+        </li>
+    {{/lists}}
+    {{^lists}}
+        {{#searchedTitle.length}}
+                </br>
+                <strong style="color: orange">No results for "{{searchedTitle}}"</strong>
+                </br>
+                </br>
+        {{/searchedTitle.length}}
+    {{/lists}}
+</ul>
+<div id="modalCreate"></div>-->
+<table class="table table-light table-bordered text-center">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Ava</th>
+        <th scope="col">Title</th>
+        <th scope="col">Delete</th>
+        <th scope="col">Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#lists}}
+        <tr>
+            <td><img src="{{listAva}}" width="42" height="42" style="border-radius: 50%;"/></td>
+            <td><a href="/lists/{{_id}}">{{title}}</a></td>
+            <td><button type="button" class="btn btn-danger text-right" id="deleteBtn" onClick='CreateModal("{{_id}}");' data-toggle="modal" data-target="#myModal">Delete</button></td>
+            <td><form action="/lists/update/{{_id}}" method="GET"><button type="submit" class="btn btn-info">Edit</button></form></td>
+        </tr>
+    {{/lists}}
+    </tbody>
+    {{^lists}}
+        {{#searchedTitle.length}}
+            </br>
+            <strong style="color: orange">No results for "{{searchedTitle}}"</strong>
+            </br>
+            </br>
+        {{/searchedTitle.length}}
+    {{/lists}}
+</table>
+<div id="modalCreate"></div>

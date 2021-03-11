@@ -1,0 +1,53 @@
+<table class="table table-light table-bordered text-center">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Ava</th>
+        <th scope="col">Title</th>
+        <th scope="col">Delete</th>
+        <th scope="col">Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#notes}}
+        <tr>
+            <td><img src="{{noteFilesUrl}}" width="42" height="42" style="border-radius: 50%;"/></td>
+            <td><a href="/notes/{{_id}}">{{title}}</a></td>
+            <td><button type="button" class="btn btn-danger text-right" id="deleteBtn" onClick='CreateModal("{{_id}}");' data-toggle="modal" data-target="#myModal">Delete</button></td>
+            <td><form action="/notes/update/{{_id}}" method="GET"><button type="submit" class="btn btn-info">Edit</button></form></td>
+        </tr>
+    {{/notes}}
+    </tbody>
+    {{^notes}}
+        {{#searchedTitle.length}}
+            </br>
+            <strong style="color: orange">No results for "{{searchedTitle}}"</strong>
+            </br>
+            </br>
+        {{/searchedTitle.length}}
+    {{/notes}}
+</table>
+<div id="modalCreate"></div>
+
+<!--{{#list.notes}}
+                            <tr>
+
+                                    <td><a href="/notes/{{id}}?list={{list._id}}">{{title}}</a></td>
+                                    <td>
+                                        <form action="/notes/{{id}}" method="POST">
+                                            <input type="hidden" name="listId" value="{{list._id}}">
+                                            <input type="submit" value="Delete">
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="/notes/update" method="GET">
+                                            <input type="hidden" name="noteId" value="{{id}}">
+                                            <input type="submit" value="Update">
+                                         </form>
+                                    <td>
+                            </tr>
+                        {{/list.notes}}
+                        {{^list.notes.length}}
+                        <tr>
+                                <td>No notes!</td>
+                        </tr>
+                        {{/list.notes.length}}-->
